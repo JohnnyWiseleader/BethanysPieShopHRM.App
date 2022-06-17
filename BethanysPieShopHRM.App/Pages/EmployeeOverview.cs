@@ -1,4 +1,5 @@
-﻿using BethanysPieShopHRM.App.Services;
+﻿using BethanysPieShopHRM.App.Components;
+using BethanysPieShopHRM.App.Services;
 using BethanysPieShopHRM.Shared;
 using Microsoft.AspNetCore.Components;
 using System;
@@ -16,10 +17,22 @@ namespace BethanysPieShopHRM.App.Pages
 		[Inject]
 		public IEmployeeDataService EmployeeDataService { get; set; }
 
+		protected AddEmployeeDialog AddEmployeeDialog { get; set; }
+
 		protected override async Task OnInitializedAsync()
 		{
 			Employees = (await EmployeeDataService.GetEmployees()).ToList();
 		}
 
+		protected void QuickAddEmployee()
+		{
+			AddEmployeeDialog.Show();
+		}
+
+		public async void AddEmployeeDialog_OnDialogClose()
+		{
+			Employees = (await EmployeeDataService.GetEmployees()).ToList();
+			StateHasChanged();
+		}
 	}
 }
