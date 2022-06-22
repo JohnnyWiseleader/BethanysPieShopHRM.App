@@ -46,7 +46,7 @@ namespace BethanysPieShopHRM.App.Pages
             if (employeeId == 0) //new employee is being created
             {
                 // add some defualts
-                Employee = new Employee { CountryId = 1, JobCategoryId = 1, BirthDate = DateTime.Now, City = "Anytown", FirstName = "Jane", LastName = "Jackson", Gender = Gender.Other, JoinedDate = DateTime.Now };
+                Employee = new Employee { CountryId = 1, JobCategoryId = 1, Email= "info@bethanyspieshop.com", BirthDate = DateTime.Now, JoinedDate = DateTime.Now };
             }
             else
             {
